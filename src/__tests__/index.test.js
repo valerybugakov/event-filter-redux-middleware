@@ -1,6 +1,6 @@
 import eventFilterMiddlware from '../index';
 
-const store = {}
+const store = {};
 
 describe('Event Filter middleware', () => {
   test('Removes nativeEvent from action payload', () => {
@@ -8,13 +8,13 @@ describe('Event Filter middleware', () => {
       type: 'text',
       payload: {
         nativeEvent: 'nativeEventValue',
-        data: 'dataValue',
+        data: 'dataValue'
       }
-    }
+    };
 
-    const result = eventFilterMiddlware(store)(v => v)(action)
+    const result = eventFilterMiddlware(store)(v => v)(action);
 
-    expect(result.payload).not.toHaveProperty('nativeEvent')
-    expect(result.payload).toHaveProperty('data', 'dataValue')
-  })
-})
+    expect(result.payload).not.toHaveProperty('nativeEvent');
+    expect(result.payload).toHaveProperty('data', 'dataValue');
+  });
+});
