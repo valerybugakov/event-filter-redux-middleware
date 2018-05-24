@@ -7,14 +7,12 @@ describe('Event Filter middleware', () => {
     const action = {
       type: 'text',
       payload: {
-        nativeEvent: 'nativeEventValue',
-        data: 'dataValue'
+        nativeEvent: 'nativeEventValue'
       }
     };
 
     const result = eventFilterMiddlware(store)(v => v)(action);
 
-    expect(result.payload).not.toHaveProperty('nativeEvent');
-    expect(result.payload).toHaveProperty('data', 'dataValue');
+    expect(result.payload).toEqual(undefined);
   });
 });

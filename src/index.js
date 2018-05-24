@@ -3,14 +3,11 @@ const eventFilterMiddlware = () => next => action => {
     throw new Error('Apply this middleware at last position');
   }
 
-  const hasNativeEvent = (
-    action.payload &&
-    action.payload.nativeEvent
-  )
+  const hasNativeEvent = action.payload && action.payload.nativeEvent;
 
   // Remove synthetic events from the payload
   if (hasNativeEvent) {
-    delete action.payload.nativeEvent
+    action.payload = undefined;
   }
 
   return next(action);
